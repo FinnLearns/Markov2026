@@ -24,14 +24,15 @@ def criteria(nums):
 
   return met
 
-c = 4 / np.exp(1) # acceptance rate
+c = 4 / np.exp(1)
 N = 10**6
 
-# number of generated samples is number of wanted samples times acceptance rate
+# number of generated samples is number of wanted samples divided by acceptance rate
 # plus a little extra
-U = np.random.uniform(0,1,(math.ceil(1.001*c*N),2))
+U = np.random.uniform(0,1,(math.ceil(1.001*N*c),2))
 
 randNums = criteria(U) # returns samples that meet condition
+print(len(randNums))
 randNums = randNums[:N] # cut off any extra beyond N samples
 
 print(f"Total time taken: {time.time() - startTime}")
